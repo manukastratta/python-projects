@@ -197,22 +197,18 @@ def changeBrightnessLevel(mouse_x,slider):
     global IMAGE_CURRENT, PREV_FILENAME
 
     diff = mouse_x-slider.middleX
-
     half = slider.lineWidth / 2
-
     distPercent = abs(diff / half)
     print("dist percent: ", distPercent)
 
-
     if diff >= 0:
-        newBrightnessLevel = distPercent + 1
+        newBrightnessLevel = min(distPercent + 1, 1.99)
         filters.brightnessLevel = newBrightnessLevel
         print("newBrightness level: ", newBrightnessLevel)
     elif diff < 0:
-        newBrightnessLevel = max(0.5, 1-distPercent)
+        newBrightnessLevel = max(0.55, 1-distPercent)
         filters.brightnessLevel = newBrightnessLevel
         print("newBrightness level: ", newBrightnessLevel)
-
 
     brightPhoto = filters.brightness(PREV_FILENAME)
     IMAGE_CURRENT = pygame.image.load(brightPhoto)
