@@ -1,5 +1,6 @@
 import pygame, sys
 import filters
+import os.path
 
 pygame.init()
 screen = pygame.display.set_mode([1000, 700])
@@ -29,10 +30,15 @@ white=(255 ,255, 255)
 
 FILENAME = "dog.png"
 
-USER_INPUT = input("What image do you want to upload? ")
-if USER_INPUT != "":
+def choose_image():
+    global FILENAME
+    while True:
+        USER_INPUT = input("What image do you want to upload? ")
+        if os.path.isfile(USER_INPUT): break
+        print("File does NOT exist! Try another file.")
     FILENAME = USER_INPUT
 
+choose_image()
 PREV_FILENAME = FILENAME
 IMAGE_ORIGINAL = pygame.image.load(FILENAME)
 IMAGE_ORIGINAL = scaledImage(IMAGE_ORIGINAL)
@@ -156,13 +162,11 @@ def checkButtons():
                 PREV_FILENAME = FILENAME
 
             elif button.title == "New Image":
-                USER_INPUT = input("What image do you want to upload? ")
-                if USER_INPUT != "":
-                    FILENAME = USER_INPUT
-                    PREV_FILENAME = FILENAME
-                    IMAGE_ORIGINAL = pygame.image.load(FILENAME)
-                    IMAGE_ORIGINAL = scaledImage(IMAGE_ORIGINAL)
-                    IMAGE_CURRENT = IMAGE_ORIGINAL
+                choose_image()
+                PREV_FILENAME = FILENAME
+                IMAGE_ORIGINAL = pygame.image.load(FILENAME)
+                IMAGE_ORIGINAL = scaledImage(IMAGE_ORIGINAL)
+                IMAGE_CURRENT = IMAGE_ORIGINAL
 
 def changeSaturationLevel(mouse_x,slider):
     #left = -
