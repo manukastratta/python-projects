@@ -135,7 +135,7 @@ def checkButtons():
                 filters.blurRadius += 1
                 PREV_FILENAME = bluredPhoto
             elif button.title == "Invert":
-                invertedPhoto = filters.Invert(PREV_FILENAME)
+                invertedPhoto = filters.invert(PREV_FILENAME)
                 IMAGE_CURRENT = pygame.image.load(invertedPhoto)
                 IMAGE_CURRENT = scaledImage(IMAGE_CURRENT)
                 PREV_FILENAME = invertedPhoto

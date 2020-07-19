@@ -31,8 +31,6 @@ def brightness(filename):
     img2.save(new_name)
     return new_name
 
-
-
 def saturation(filename):
     new_name = "saturated.png"
     img = Image.open(filename)
@@ -41,7 +39,7 @@ def saturation(filename):
     img2.save(new_name)
     return new_name
 
-def Invert(filename):
+def invert(filename):
     new_name = "inverted.png"
     img = Image.open(filename)
     width, height = img.size
@@ -59,7 +57,7 @@ def Invert(filename):
     #img = Image.open(filename)
     #img = PIL.ImageOps.invert(img)
     #img.save(new_name)
-    return new_name
+    #return new_name
 
 def findEdge(filename):
     new_name = "demonic.png"
@@ -69,11 +67,6 @@ def findEdge(filename):
     return new_name
 
 def blackAndWhite(filename):
-    #new_name = "blackAndWhite.png"
-    #img = Image.open(filename)
-    #img = img.convert('LA')
-    #img.save(new_name)
-    #return new_name
     new_name = "blackAndWhite.png"
     img = Image.open(filename)
     width, height = img.size
@@ -85,6 +78,11 @@ def blackAndWhite(filename):
             pixels[x, y] = (newImg, newImg, newImg)
     img.save(new_name)
     return new_name
+    #new_name = "blackAndWhite.png"
+    #img = Image.open(filename)
+    #img = img.convert('LA')
+    #img.save(new_name)
+    #return new_name
 
 def sharpen(filename):
     new_name="sharp.png"
