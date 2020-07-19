@@ -253,7 +253,7 @@ def checkArrow(mouse_x, mouse_y):
                 mirroredPhoto = filters.flip(PREV_FILENAME)
                 IMAGE_CURRENT = pygame.image.load(mirroredPhoto)
                 IMAGE_CURRENT = scaledImage(IMAGE_CURRENT)
-                PREV_FILENAME = rotatedPhotoR
+                PREV_FILENAME = mirroredPhoto
             
 
 

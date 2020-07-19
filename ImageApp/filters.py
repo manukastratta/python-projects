@@ -113,6 +113,7 @@ def flip(filename):
     img = Image.open(filename)
     img = PIL.ImageOps.mirror(img)
     img.save(new_name)
+    return new_name
 
 def exampleFilters(filename):
     img = Image.open("dogs.jpg")
