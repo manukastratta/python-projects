@@ -21,7 +21,7 @@ buttons=[]
 sliders=[]
 arrows=[]
 arrowTitles=["rot L", "rot R","flip"]
-titles=["Black & White","Blur","Invert","Sharpen","Edge Detection","Sepia","Reset", "New Image"]
+titles=["Black & White","Blur","Invert","Sharpen","Edge Detection","Sepia","Reset", "New Image", "Save Final"]
 sliderTitles=["Saturation", "Brightness"]
 #fonts
 myfont = pygame.font.SysFont('ArialBold', 24)
@@ -87,8 +87,8 @@ for i in range(2):
     sliders.append(slider)
 
 #buttons
-for i in range(8):
-    button = Button(820,100+i * 75,titles[i])
+for i in range(9):
+    button = Button(820,50+i * 75,titles[i])
     buttons.append(button)
 
 for i in range(3):
@@ -160,13 +160,14 @@ def checkButtons():
                     slider.Ex= slider.middleX
                 IMAGE_CURRENT = IMAGE_ORIGINAL
                 PREV_FILENAME = FILENAME
-
             elif button.title == "New Image":
                 choose_image()
                 PREV_FILENAME = FILENAME
                 IMAGE_ORIGINAL = pygame.image.load(FILENAME)
                 IMAGE_ORIGINAL = scaledImage(IMAGE_ORIGINAL)
                 IMAGE_CURRENT = IMAGE_ORIGINAL
+            elif button.title == "Save Final":
+                filters.saveFinal(PREV_FILENAME)
 
 def changeSaturationLevel(mouse_x,slider):
     #left = -

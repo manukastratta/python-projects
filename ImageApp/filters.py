@@ -113,6 +113,11 @@ def flip(filename):
     img.save(new_name)
     return new_name
 
+def saveFinal(filename):
+    new_name = "FINAL.png"
+    img = Image.open(filename)
+    img.save(new_name)
+
 def exampleFilters(filename):
     img = Image.open("dogs.jpg")
     width, height = img.size
